@@ -21,7 +21,7 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
     write(bat, file=tempbat)
     shell(tempbat, translate=T, wait=T)   
   }else{
-    system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ -headless -batch ", dir, "macro1.txt"), wait=T) 
+    system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro1.txt"), wait=T) 
   }
   
   # Crop a ROI for each file
@@ -40,7 +40,7 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
       write(bat, file=tempbat)
       shell(tempbat,wait=T)   
     }else{
-      system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ -headless -batch ", dir, "macro2.txt"), wait=T) 
+      system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro2.txt"), wait=T) 
     }
   } 
   
@@ -84,6 +84,6 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
     shell(tempbat,wait=T)   
   }else{
     
-    system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ -headless -batch ", dir, "macro3.txt"), wait=T) 
+    system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro3.txt"), wait=T) 
   }
 }
