@@ -86,6 +86,7 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
     write(bat, file=tempbat)
     shell(tempbat,wait=T)   
   } else if (os == "unix") {
+    print("Unix")
     system(paste0("~/ImageJ/ImageJ --headless -macro ", dir, "macro3.txt"), wait=T) 
   } else {
     print(os)
