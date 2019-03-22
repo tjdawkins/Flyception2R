@@ -83,7 +83,7 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
     write(bat, file=tempbat)
     shell(tempbat,wait=T)   
   }else{
-    
+    print(os)
     system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro3.txt"), wait=T) 
   }
 }
