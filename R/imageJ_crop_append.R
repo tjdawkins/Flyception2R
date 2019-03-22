@@ -20,6 +20,8 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
     tempbat <- paste(tempfile('bat'),".bat",sep="")
     write(bat, file=tempbat)
     shell(tempbat, translate=T, wait=T)   
+  } else if (os == "unix") {
+    system(paste0("~/code/ImageJ/ImageJ -Xmx8g -- --headless ", dir, "macro1.txt"), wait=T)
   }else{
     system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro1.txt"), wait=T) 
   }
@@ -39,6 +41,8 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
       tempbat <- paste(tempfile('bat'),".bat",sep="")
       write(bat, file=tempbat)
       shell(tempbat,wait=T)   
+    } else if (os == "unix") {
+      system(paste0("~/code/ImageJ/ImageJ -Xmx8g -- --headless ", dir, "macro2.txt"), wait=T) 
     }else{
       system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro2.txt"), wait=T) 
     }
@@ -76,13 +80,14 @@ imageJ_crop_append <- function(dir, ch=1, roi=c(383, 0, 256, 256)){
   write(paste0('saveAs("tiff", "', tools::file_path_sans_ext(fluo_view_cropped_files_full[1]), '.concat.tif");\n run("Quit");\n'), file=paste0(dir,"macro3.txt"), append=T)
   
   # Execute the macro
-  
   if (os == "windows"){
     bat <- paste0('pushd "C:\\Program Files\\ImageJ"', '\n jre\\bin\\java -jar -Xmx8g ij.jar  -batch "', windir, 'macro3.txt" ', dir, '\n pause\n exit')
     tempbat <- paste(tempfile('bat'),".bat",sep="")
     write(bat, file=tempbat)
     shell(tempbat,wait=T)   
-  }else{
+  } else if (os == "unix") {
+    system(paste0("~/code/ImageJ/ImageJ -Xmx8g -- --headless ", dir, "macro3.txt"), wait=T) 
+  } else {
     print(os)
     system(paste0("java -Xmx8g -jar /Applications/ImageJ/ImageJ.app/Contents/Resources/Java/ij.jar -ijpath /Applications/ImageJ --headless -batch ", dir, "macro3.txt"), wait=T) 
   }
